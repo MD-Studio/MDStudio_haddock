@@ -18,8 +18,8 @@ from lie_graph.graph_io.io_jsonschema_format import read_json_schema
 from lie_graph.graph_axis.graph_axis_methods import node_descendants
 from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
 
-from haddock_model_classes import haddock_orm
-from haddock_helper_methods import new_incremented_param_name, validate_model
+from .haddock_model_classes import haddock_orm
+from .haddock_helper_methods import new_incremented_param_name, validate_model
 
 schemadir = pkg_resources.resource_filename('lie_haddock', '/schemas/endpoints')
 

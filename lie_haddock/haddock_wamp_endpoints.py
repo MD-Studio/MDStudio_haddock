@@ -49,12 +49,10 @@ class HaddockComponent(ComponentSession):
 
     @endpoint('import_project', 'haddock-project-import-request', 'haddock-project-import-response')
     def import_project(self, request, claims):
-
         pass
 
     @endpoint('export_project', 'haddock-project-export-request', 'haddock-project-export-response')
     def export_project(self, request, claims):
-
         pass
 
     @endpoint('remove_project_data', 'haddock-remove-request', 'haddock-remove-response')

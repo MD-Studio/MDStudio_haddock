@@ -8,7 +8,7 @@ WORKDIR /home/mdstudio/lie_haddock
 
 RUN pip install https://github.com/MD-Studio/lie_graph/tarball/master#egg=lie_graph
 
-RUN pip install .
+RUN pip install -e .
 
 USER mdstudio
 

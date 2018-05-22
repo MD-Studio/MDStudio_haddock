@@ -5,11 +5,11 @@ import string
 from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
 from lie_graph.graph_orm import GraphORM
 
-from haddock_io.haddock_io_pdb import PDBParser
-from haddock_io.haddock_io_tbl import validate_tbl
-from haddock_helper_methods import haddock_validation_warning
-from haddock_model_data import (haddock_dna_residues, haddock_rna_residues, haddock_protein_residues,
-                                haddock_ion_residues)
+from .haddock_io.haddock_io_pdb import PDBParser
+from .haddock_io.haddock_io_tbl import validate_tbl
+from .haddock_helper_methods import haddock_validation_warning
+from .haddock_model_data import (haddock_dna_residues, haddock_rna_residues, haddock_protein_residues,
+                                 haddock_ion_residues)
 
 
 class FloatArray(NodeAxisTools):
@@ -145,7 +145,7 @@ class CNSRestraintFiles(NodeAxisTools):
             is_pcs = self.get(key) in ('tensordata', 'pcsdata')
             try:
                 validate_tbl(tbldata, pcs=is_pcs)
-            except Exception, e:
+            except Exception as e:
                 return haddock_validation_warning(self, '{0} .tbl restraints: {1}'.format(self.get(key), e))
 
         return True
