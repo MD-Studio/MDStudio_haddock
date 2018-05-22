@@ -6,10 +6,10 @@ from mdstudio.component.session import ComponentSession
 from lie_graph.graph_io.io_dict_format import write_dict
 from lie_graph.graph_io.io_web_format import write_web
 
-from haddock_helper_methods import resolve_credentials
-from haddock_xmlrpc_endpoints import HaddockXmlrpcInterface
-from haddock_model import (load_project, save_project, new_project, remove_haddock_data_block, new_parameter_block,
-                           edit_parameter_block)
+from .haddock_helper_methods import resolve_credentials
+from .haddock_xmlrpc_endpoints import HaddockXmlrpcInterface
+from .haddock_model import (load_project, save_project, new_project, remove_haddock_data_block, new_parameter_block,
+                            edit_parameter_block)
 
 
 class HaddockComponent(ComponentSession):

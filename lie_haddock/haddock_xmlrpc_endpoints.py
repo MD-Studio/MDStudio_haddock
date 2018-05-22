@@ -9,7 +9,7 @@ Author: Mikael Trellet (Utrecht University)
 
 import os
 import sys
-import xmlrpclib
+import xmlrpc
 import hashlib
 import logging
 import tarfile
@@ -35,20 +35,20 @@ class HaddockXmlrpcInterface(object):
     def __init__(self, server_url=None, username=None, password=None):
         """
         Register server XML-RPC endpoint URL, username and md5 hashed password
-        
+
         :param server_url: Haddock XML-RPC endpoint URL
         :type server_url:  :py:str
         :param username:   Haddock server user name
         :type username:    :py:str
         :param password:   Haddock server user password
-        :type password:    :py:str 
+        :type password:    :py:str
         """
 
         self.url = server_url
-        self.server = xmlrpclib.Server(server_url)
+        self.server = xmlrpc.server.SimpleXMLRPCServer(server_url)
         self.username = username
         self.password = hashlib.md5(password).hexdigest()
-        
+
         self.authenticated = False
 
     def login(self):
@@ -62,7 +62,7 @@ class HaddockXmlrpcInterface(object):
                 if user:
                     logging.debug('Successful authentication of use "{0}" at {1}'.format(self.username, self.url))
                     self.authenticated = True
-            except xmlrpclib.Fault, e:
+            except xmlrpc.client.Fault as e:
                 HaddockXmlrpcException(e.faultString, self.username)
                 self.authenticated = False
 
@@ -91,7 +91,7 @@ class HaddockXmlrpcInterface(object):
 
         try:
             return self.server.listUsers(self.username, self.password)
-        except xmlrpclib.Fault, e:
+        except xmlrpc.client.Fault as e:
             HaddockXmlrpcException(e.faultString, self.username)
 
     def list_projects(self):
@@ -104,7 +104,7 @@ class HaddockXmlrpcInterface(object):
 
         try:
             return self.server.listAllProjects(self.username, self.password)
-        except xmlrpclib.Fault, e:
+        except xmlrpc.client.Fault as e:
             HaddockXmlrpcException(e.faultString, self.username)
             return []
 
@@ -124,7 +124,7 @@ class HaddockXmlrpcInterface(object):
 
         try:
             return self.server.getProjectStatus(self.username, self.password, project)
-        except xmlrpclib.Fault, e:
+        except xmlrpc.client.Fault as e:
             HaddockXmlrpcException(e.faultString, self.username)
             return {}
 
@@ -141,7 +141,7 @@ class HaddockXmlrpcInterface(object):
 
         try:
             return self.server.getResultsDownloadLocation(self.username, self.password, project)
-        except xmlrpclib.Fault, e:
+        except xmlrpc.client.Fault as e:
             HaddockXmlrpcException(e.faultString, self.username)
             return None
 
@@ -158,7 +158,7 @@ class HaddockXmlrpcInterface(object):
 
         try:
             return self.server.getProjectParams(self.username, self.password, project)
-        except xmlrpclib.Fault, e:
+        except xmlrpc.client.Fault as e:
             HaddockXmlrpcException(e.faultString, self.username)
             return None
 
@@ -250,6 +250,6 @@ class HaddockXmlrpcInterface(object):
 
         try:
             return self.server.launchProject(self.username, self.password, project, params)
-        except xmlrpclib.Fault, e:
+        except xmlrpc.client.Fault as e:
             HaddockXmlrpcException(e.faultString, self.username)
             return None

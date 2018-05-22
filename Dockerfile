@@ -6,6 +6,8 @@ RUN chown mdstudio:mdstudio /home/mdstudio/lie_haddock
 
 WORKDIR /home/mdstudio/lie_haddock
 
+RUN pip install https://github.com/MD-Studio/lie_graph/tarball/master#egg=lie_graph
+
 RUN pip install .
 
 USER mdstudio
