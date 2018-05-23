@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Haddock macromolecular docking base project parameter definitions output",
+    "type": "object",
+    "properties": {
+	"project_id": {
+	    "description": "Haddock project identifier",
+	    "type": "string"
+	}
+    },
+    "required": ["project_id"]
+}

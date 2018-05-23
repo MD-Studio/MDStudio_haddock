@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Submit a Haddock project to the Haddock server",
+    "type": "object",
+    "properties": {
+	"project_id": {
+	    "description": "Haddock project identifier",
+	    "type": "string"
+	}
+    },
+    "required": ["project_id"],
+  "additionalProperties": false
+}

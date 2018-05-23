@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Haddock Pseudo Contact Shifts (PCS) restraints definitions",
+    "type": "object",
+    "properties": {
+	"project_id": {
+	    "description": "Haddock project identifier",
+	    "type": "string"
+	}
+    },
+    "required": ["project_id"]
+}

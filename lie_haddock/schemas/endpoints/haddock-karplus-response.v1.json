@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Create new or edit existing Haddock Karplus Constant definition",
+    "type": "object",
+    "properties": {
+	"project_id": {
+	    "description": "Haddock project identifier",
+	    "type": "string"
+	}
+    },
+    "required": ["project_id"]
+}

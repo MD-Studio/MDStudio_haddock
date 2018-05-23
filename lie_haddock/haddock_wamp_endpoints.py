@@ -24,7 +24,7 @@ class HaddockComponent(ComponentSession):
 
         return True
 
-    @endpoint('new_project', 'haddock-project-request', 'haddock-project-request')
+    @endpoint('new_project', 'haddock-project-request', 'haddock-project-response')
     def new_project(self, request, claims):
         """
         Create a new default Haddock project.
@@ -47,13 +47,13 @@ class HaddockComponent(ComponentSession):
         result.update(write_dict(params, allow_none=False))
         return result
 
-    @endpoint('import_project', 'haddock-project-import-request', 'haddock-project-import-response')
-    def import_project(self, request, claims):
-        pass
+    # @endpoint('import_project', 'haddock-project-import-request', 'haddock-project-import-response')
+    # def import_project(self, request, claims):
+    #     pass
 
-    @endpoint('export_project', 'haddock-project-export-request', 'haddock-project-export-response')
-    def export_project(self, request, claims):
-        pass
+    # @endpoint('export_project', 'haddock-project-export-request', 'haddock-project-export-response')
+    # def export_project(self, request, claims):
+    #     pass
 
     @endpoint('remove_project_data', 'haddock-remove-request', 'haddock-remove-response')
     def remove_project_data(self, request, claims):
@@ -73,7 +73,7 @@ class HaddockComponent(ComponentSession):
 
         return {'project_id': request['project_id'], 'success': success}
 
-    @endpoint('edit_dani', 'haddock-dani-request', 'haddock-dani-request')
+    @endpoint('edit_dani', 'haddock-dani-request', 'haddock-dani-response')
     def edit_dani(self, request, claims):
         """
         Create new or edit existing Haddock Relaxation anisotropy restraints
@@ -97,7 +97,7 @@ class HaddockComponent(ComponentSession):
 
         return result
 
-    @endpoint('edit_rdc', 'haddock-rdc-request', 'haddock-rdc-request')
+    @endpoint('edit_rdc', 'haddock-rdc-request', 'haddock-rdc-response')
     def edit_rdc(self, request, claims):
         """
         Create new or edit existing Haddock Residual Dipolar Coupling
@@ -121,7 +121,7 @@ class HaddockComponent(ComponentSession):
 
         return result
 
-    @endpoint('edit_pcs', 'haddock-pcs-request', 'haddock-pcs-request')
+    @endpoint('edit_pcs', 'haddock-pcs-request', 'haddock-pcs-response')
     def edit_pcs(self, request, claims):
         """
         Create new or edit existing Haddock Pseudo Contact Shift (PCS)
@@ -144,7 +144,7 @@ class HaddockComponent(ComponentSession):
 
         return result
 
-    @endpoint('edit_karplus', 'haddock-karplus-request', 'haddock-karplus-request')
+    @endpoint('edit_karplus', 'haddock-karplus-request', 'haddock-karplus-response')
     def edit_karplus(self, request, claims):
         """
         Create new or edit existing Haddock Karplus Constant definition
@@ -168,7 +168,7 @@ class HaddockComponent(ComponentSession):
 
         return result
 
-    @endpoint('edit_partner', 'haddock-partner-request', 'haddock-partner-request')
+    @endpoint('edit_partner', 'haddock-partner-request', 'haddock-partner-response')
     def edit_partner(self, request, claims):
         """
         Create new or edit existing Haddock molecular partner
