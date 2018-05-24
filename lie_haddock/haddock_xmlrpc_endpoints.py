@@ -16,9 +16,9 @@ import tarfile
 if sys.version_info[0] < 3:
     from urllib2 import urlopen
     from xmlrpclib import Fault
-    from xmlrpclib.SimpleXMLRPCServer import SimpleXMLRPCServer
+    from xmlrpclib import ServerProxy
 else:
-    from xmlrpc.server import SimpleXMLRPCServer
+    from xmlrpc.client import ServerProxy
     from xmlrpc.client import Fault
     from urllib.request import urlopen
 
@@ -48,7 +48,7 @@ class HaddockXmlrpcInterface(object):
         """
 
         self.url = server_url
-        self.server = SimpleXMLRPCServer(server_url)
+        self.server = ServerProxy(server_url)
         self.username = username
         self.password = hashlib.md5(password).hexdigest()
 
