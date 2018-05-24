@@ -234,8 +234,13 @@ class HaddockComponent(ComponentSession):
         result = {'project_id': None}
         if not project.empty():
 
+            # Get username and password
+            username, password = resolve_credentials(self.component_config.settings)
+
             webformat = write_web(project)
-            response = self.xmlrpc.launch_project(webformat, request['project_id'])
+            xmlrpc = HaddockXmlrpcInterface(server_url=self.component_config.settings['haddock_server_url'],
+                                        username=username, password=password)
+            response = xmlrpc.launch_project(webformat, request['project_id'])
             result['project_id'] = response
 
             if response != request['project_id']:
