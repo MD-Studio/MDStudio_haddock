@@ -21,10 +21,13 @@ def resolve_credentials(settings):
     :return:         username, password
     """
 
-    username = settings.get('haddock_username', os.environ.get('HADDOCK_SERVER_USER').strip())
-    password = settings.get('haddock_password', os.environ.get('HADDOCK_SERVER_PW').strip())
+    username = settings.get('haddock_username', os.environ.get('HADDOCK_SERVER_USER'))
+    password = settings.get('haddock_password', os.environ.get('HADDOCK_SERVER_PW'))
 
-    return username, password
+    if username and password:
+        return username.strip(), password.strip()
+
+    return None, None
 
 
 def haddock_validation_warning(instance, message=''):
