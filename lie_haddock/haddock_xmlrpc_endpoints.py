@@ -50,7 +50,7 @@ class HaddockXmlrpcInterface(object):
         self.url = server_url
         self.server = ServerProxy(server_url)
         self.username = username
-        self.password = hashlib.md5(password).hexdigest()
+        self.password = hashlib.md5(password.encode('utf-8')).hexdigest()
 
         self.authenticated = False
 
