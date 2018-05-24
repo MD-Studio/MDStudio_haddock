@@ -235,7 +235,7 @@ class HaddockComponent(ComponentSession):
         if not project.empty():
 
             # Get username and password
-            username, password = resolve_credentials(self.component_config.settings)
+            username, password = resolve_credentials(request)
 
             webformat = write_web(project)
             xmlrpc = HaddockXmlrpcInterface(server_url=self.component_config.settings['haddock_server_url'],
