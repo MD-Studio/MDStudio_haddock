@@ -21,8 +21,8 @@ def resolve_credentials(settings):
     :return:         username, password
     """
 
-    username = settings.get('haddock_username', os.environ.get('HADDOCK_SERVER_USER'))
-    password = settings.get('haddock_password', os.environ.get('HADDOCK_SERVER_PW'))
+    username = settings.get('haddock_username', os.environ.get('HADDOCK_SERVER_USER').strip())
+    password = settings.get('haddock_password', os.environ.get('HADDOCK_SERVER_PW').strip())
 
     return username, password
 

@@ -179,7 +179,7 @@ class TestHaddockProjectBuild(unittest2.TestCase):
         self.assertEqual(block_id, 'project.rdc1')
         self.assertTrue(json_schema_validation(valdict, 'haddock-rdc-request.v1.json'))
 
-    def test_edit_pcs_restriants(self):
+    def test_edit_pcs_restraints(self):
         """
         Test adding PCS restraint data to the project
         """

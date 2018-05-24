@@ -28,7 +28,7 @@ settings = xmlrpc_settings.getnodes(xmlrpc_settings.root).settings
 server_username, server_password = resolve_credentials(settings)
 
 
-@unittest2.skipIf(server_username is None and server_password is None,
+@unittest2.skipIf(not server_username or not server_password,
                   "HADDOCK_SERVER_USER and HADDOCK_SERVER_PW environment variables not set.")
 class TestHaddockServerCommunication(unittest2.TestCase):
 
