@@ -13,7 +13,7 @@ global:
 
 install:
   # install library
-  - pip install git://github.com/MD-Studio/lie_graph/tarball/master#egg=lie_graph
+  - pip install https://github.com/MD-Studio/lie_graph/tarball/master#egg=lie_graph
   - pip install .[test]
 
 script:
