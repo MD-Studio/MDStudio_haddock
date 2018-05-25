@@ -1,0 +1,24 @@
+sudo: false
+language: python
+
+os:
+ - linux
+
+python:
+  - "3.6"
+
+global:
+  env:
+    - COMMIT_AUTHOR_EMAIL: "f.zapata@esciencecenter.nl"
+
+install:
+  # install library
+  - pip install git://github.com/MD-Studio/lie_graph/tarball/master#egg=lie_graph
+  - pip install .[test]
+
+script:
+  - (cd tests && coverage run -m unittest discover -vvv)
+
+branches:
+  only:
+    - master
