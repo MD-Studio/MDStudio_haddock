@@ -234,12 +234,18 @@ class HaddockComponent(ComponentSession):
         result = {'project_id': None}
         if not project.empty():
 
+            # Get username and password
+            username, password = resolve_credentials(request)
+
             webformat = write_web(project)
-            response = self.xmlrpc.launch_project(webformat, request['project_id'])
+            root = project.get_root()
+            xmlrpc = HaddockXmlrpcInterface(server_url=self.component_config.settings['haddock_server_url'],
+                                        username=username, password=password)
+            response = xmlrpc.launch_project(webformat, root.runname.value)
             result['project_id'] = response
 
             if response != request['project_id']:
-                self.loger.error('Unable to submit project {0} to Haddock server'.format(request['project_id']))
+                self.log.error('Unable to submit project {0} to Haddock server'.format(request['project_id']))
         else:
             self.log.error('Unable to load project {0}'.format(request['project_id']))
 

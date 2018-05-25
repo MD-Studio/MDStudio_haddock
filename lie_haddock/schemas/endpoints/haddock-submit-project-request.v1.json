@@ -1,13 +1,25 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Submit a Haddock project to the Haddock server",
-    "type": "object",
-    "properties": {
-	"project_id": {
-	    "description": "Haddock project identifier",
-	    "type": "string"
-	}
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Submit a Haddock project to the Haddock server",
+  "type": "object",
+  "properties": {
+    "project_id": {
+      "description": "Haddock project identifier",
+      "type": "string"
     },
-    "required": ["project_id"],
+    "haddock_username": {
+      "description": "Haddock webserver username",
+      "type": "string"
+    },
+    "haddock_password": {
+      "description": "Haddock webserver password",
+      "type": "string"
+    }
+  },
+  "required": [
+    "project_id",
+    "haddock_username",
+    "haddock_password"
+  ],
   "additionalProperties": false
 }
