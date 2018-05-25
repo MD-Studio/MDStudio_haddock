@@ -44,7 +44,7 @@ setup(
     test_suite="tests",
     install_requires=['lie_graph', 'pandas'],
     extras_require={
-        'test': ['coverage']
+        'test': ['coverage', 'unittest2']
     },
     dependency_links=[
         "https://github.com/MD-Studio/lie_graph/tarball/master#egg=lie_graph"],
