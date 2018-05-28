@@ -14,7 +14,7 @@ global:
 install:
   # install library
   - pip install https://github.com/MD-Studio/lie_graph/tarball/master#egg=lie_graph
-  - pip install .[test]
+  - pip install .[test] -e
 
 script:
   - python tests
