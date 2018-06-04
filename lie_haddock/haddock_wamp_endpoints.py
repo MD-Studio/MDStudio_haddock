@@ -244,7 +244,7 @@ class HaddockComponent(ComponentSession):
             response = xmlrpc.launch_project(webformat, root.runname.value)
             result['project_id'] = response
 
-            if response != request['project_id']:
+            if response != root.runname.value:
                 self.log.error('Unable to submit project {0} to Haddock server'.format(request['project_id']))
         else:
             self.log.error('Unable to load project {0}'.format(request['project_id']))
