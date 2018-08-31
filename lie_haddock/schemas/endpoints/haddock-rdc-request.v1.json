@@ -37,7 +37,7 @@
           "default": "",
           "description": "HADDOCK TBL file containing RDC restraints",
           "haddock_type": "CNSRestraintFile",
-          "type": "string"
+	    "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "constants": {
           "description": "SANI energy constants",
