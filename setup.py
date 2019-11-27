@@ -4,7 +4,7 @@
 # package: mdstudio_haddock
 # file: setup.py
 #
-# Part of ‘mdstudio_haddock’, providing access to the HADDOCK web server for
+# Part of MDStudio HADDOCK, providing access to the HADDOCK web server for
 # biomolecular docking.
 #
 # Copyright © 2016 Marc van Dijk, VU University Amsterdam, the Netherlands
@@ -39,9 +39,8 @@ setup(
     keywords='MDStudio HADDOCK docking web server',
     platforms=['Any'],
     packages=find_packages(),
-    package_data={distribution_name: ['schemas/*', 'schemas/endpoints/*', 'schemas/resources/*']},
+    package_data={distribution_name: ['schemas/*', 'schemas/endpoints/*']},
     py_modules=[distribution_name],
-    test_suite="tests",
     install_requires=['py-graphit', 'pandas'],
     extras_require={'test': ['jsonschema']},
     include_package_data=True,
