@@ -16,11 +16,11 @@ from lie_graph.graph_io.io_jsonschema_format import read_json_schema
 from lie_graph.graph_io.io_web_format import read_web
 from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
 
-from lie_haddock.haddock_xmlrpc_endpoints import HaddockXmlrpcInterface
-from lie_haddock.haddock_helper_methods import resolve_credentials
+from mdstudio_haddock.haddock_xmlrpc_endpoints import HaddockXmlrpcInterface
+from mdstudio_haddock.haddock_helper_methods import resolve_credentials
 
 # Parse package configuration file
-settings_file = pkg_resources.resource_filename('lie_haddock', '/schemas/settings.json')
+settings_file = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/settings.json')
 xmlrpc_settings = read_json_schema(settings_file)
 xmlrpc_settings.node_tools = NodeAxisTools
 settings = xmlrpc_settings.getnodes(xmlrpc_settings.root).settings

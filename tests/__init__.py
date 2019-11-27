@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Python function for lie_haddock module, run as:
+Python function for mdstudio_haddock module, run as:
 ::
     test = module_test_suite()
     runner = unittest.TextTestRunner(verbosity=2)
@@ -23,7 +23,7 @@ sys.path.insert(0, modulepath)
 
 def module_test_suite():
     """
-    Run lie_haddock module unit tests
+    Run mdstudio_haddock module unit tests
     """
 
     testpath = os.path.join(os.path.dirname(__file__), 'module')

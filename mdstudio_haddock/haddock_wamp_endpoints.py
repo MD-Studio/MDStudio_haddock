@@ -239,9 +239,8 @@ class HaddockComponent(ComponentSession):
 
             webformat = write_web(project)
             root = project.get_root()
-            xmlrpc = HaddockXmlrpcInterface(
-                server_url=self.component_config.settings['haddock_server_url'],
-                username=username, password=password)
+            xmlrpc = HaddockXmlrpcInterface(server_url=self.component_config.settings['haddock_server_url'],
+                                        username=username, password=password)
             response = xmlrpc.launch_project(webformat, root.runname.value)
             result['project_id'] = response
 

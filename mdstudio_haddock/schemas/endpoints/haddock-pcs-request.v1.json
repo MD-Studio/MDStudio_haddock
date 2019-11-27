@@ -39,7 +39,7 @@
         "pcsdata": {
           "description": "HADDOCK TBL file containing PCS restraints",
           "haddock_type": "CNSRestraintFile",
-	    "$ref": "resource://mdgroup/common_resources/path_file/v1"
+          "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "constants": {
           "description": "PCS energy constants",

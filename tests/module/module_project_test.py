@@ -15,11 +15,11 @@ import pkg_resources
 from lie_graph.graph_io.io_web_format import read_web, write_web
 from lie_graph.graph_io.io_dict_format import write_dict
 
-from lie_haddock.haddock_model import (remove_haddock_data_block, load_project, save_project, edit_parameter_block,
-                                       new_parameter_block, new_project)
+from mdstudio_haddock.haddock_model import (remove_haddock_data_block, load_project, save_project, edit_parameter_block,
+                                            new_parameter_block, new_project)
 
 currpath = os.path.dirname(__file__)
-schemadir = pkg_resources.resource_filename('lie_haddock', '/schemas/endpoints')
+schemadir = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/endpoints')
 
 
 def json_schema_validation(data, schema):

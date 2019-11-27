@@ -14,12 +14,12 @@ from lie_graph import GraphAxis
 from lie_graph.graph_io.io_web_format import read_web
 from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
 
-from lie_haddock.haddock_model_classes import haddock_orm
-from lie_haddock.haddock_io.haddock_io_tbl import validate_tbl
-from lie_haddock.haddock_io.haddock_io_pdb import PDBParser
+from mdstudio_haddock.haddock_model_classes import haddock_orm
+from mdstudio_haddock.haddock_io.haddock_io_tbl import validate_tbl
+from mdstudio_haddock.haddock_io.haddock_io_pdb import PDBParser
 
 currpath = os.path.dirname(__file__)
-schemadir = pkg_resources.resource_filename('lie_haddock', '/schemas/endpoints')
+schemadir = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/endpoints')
 
 
 class TestHaddockDataModelTBLValidation(unittest2.TestCase):

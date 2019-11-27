@@ -1,6 +1,6 @@
-# lie_haddock
+# mdstudio_haddock
 
-[![Build Status](https://travis-ci.org/MD-Studio/lie_haddock.svg?branch=master)](https://travis-ci.org/MD-Studio/lie_haddock)
+[![Build Status](https://travis-ci.org/MD-Studio/mdstudio_haddock.svg?branch=master)](https://travis-ci.org/MD-Studio/mdstudio_haddock)
 
 This repository gathers different interfaces to HADDOCK software (http://www.bonvinlab.org/software/haddock2.2/) developed by 
 the group of Pr. Alexandre Bonvin at Utrecht University.

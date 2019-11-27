@@ -10,7 +10,7 @@ def copy_to_workdir(file_path, workdir):
     return os.path.join(workdir, base)
 
 
-workdir = "/tmp/mdstudio/lie_haddock"
+workdir = "/tmp/mdstudio/mdstudio_haddock"
 project_file = copy_to_workdir(os.path.join(os.getcwd(), "easy_run_server_ref.web"), workdir)
 
 
@@ -22,7 +22,7 @@ class Run_haddock(ComponentSession):
     @chainable
     def on_run(self):
         result = yield self.call(
-            "mdgroup.lie_haddock.endpoint.submit_project",
+            "mdgroup.mdstudio_haddock.endpoint.submit_project",
             {"project_id": project_file,
              "haddock_username": "",
              "haddock_password": ""})

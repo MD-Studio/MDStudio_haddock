@@ -17,12 +17,12 @@ from lie_graph.graph_io.io_web_format import read_web
 from lie_graph.graph_io.io_dict_format import write_dict
 from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
 
-from lie_haddock.haddock_model_classes import haddock_orm
-from lie_haddock.haddock_model import (remove_haddock_data_block, load_project, save_project, edit_parameter_block,
-                                           new_haddock_data_block_from_template, new_parameter_block)
+from mdstudio_haddock.haddock_model_classes import haddock_orm
+from mdstudio_haddock.haddock_model import (remove_haddock_data_block, load_project, save_project, edit_parameter_block,
+                                            new_haddock_data_block_from_template, new_parameter_block)
 
 currpath = os.path.dirname(__file__)
-schemadir = pkg_resources.resource_filename('lie_haddock', '/schemas/endpoints')
+schemadir = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/endpoints')
 
 
 def schema_to_data(schema, defdict=None):
@@ -39,7 +39,7 @@ def schema_to_data(schema, defdict=None):
     return default_data
 
 
-@unittest2.skipIf(not os.path.exists(schemadir), "lie_haddock package not installed")
+@unittest2.skipIf(not os.path.exists(schemadir), "mdstudio_haddock package not installed")
 class TestHaddockDataModelBlockAdd(unittest2.TestCase):
 
     webfile = os.path.join(currpath, '../', 'files', 'haddock_params_base.web')

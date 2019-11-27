@@ -1,10 +1,10 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# package: lie_haddock
+# package: mdstudio_haddock
 # file: setup.py
 #
-# Part of ‘lie_haddock’, providing access to the HADDOCK web server for 
+# Part of ‘mdstudio_haddock’, providing access to the HADDOCK web server for
 # biomolecular docking.
 #
 # Copyright © 2016 Marc van Dijk, VU University Amsterdam, the Netherlands
@@ -23,7 +23,7 @@
 
 from setuptools import setup, find_packages
 
-distribution_name = 'lie_haddock'
+distribution_name = 'mdstudio_haddock'
 
 setup(
     name=distribution_name,
@@ -34,7 +34,7 @@ setup(
     Paul Visscher - Zefiros Software (www.zefiros.eu)
     Felipe Zapata - eScience Center (https://www.esciencecenter.nl/)""",
     author_email=['m4.van.dijk@vu.nl', 'f.zapata@esciencecenter.nl'],
-    url='https://github.com/MD-Studio/lie_haddock',
+    url='https://github.com/MD-Studio/mdstudio_haddock',
     license='Apache Software License 2.0',
     keywords='MDStudio HADDOCK docking web server',
     platforms=['Any'],
@@ -42,12 +42,10 @@ setup(
     package_data={distribution_name: ['schemas/*', 'schemas/endpoints/*', 'schemas/resources/*']},
     py_modules=[distribution_name],
     test_suite="tests",
-    install_requires=['lie_graph', 'pandas'],
+    install_requires=['py-graphit', 'pandas'],
     extras_require={
         'test': ['coverage', 'jsonschema', 'unittest2']
     },
-    dependency_links=[
-        "https://github.com/MD-Studio/lie_graph/tarball/master#egg=lie_graph"],
     include_package_data=True,
     zip_safe=True,
     classifiers=[

@@ -192,9 +192,9 @@
           "type": "boolean"
         },
         "dihedraldata": {
-            "description": "Dihedral angle restraints TBL file",
-            "haddock_type": "CNSRestraintFiles",
-	    "$ref": "resource://mdgroup/common_resources/path_file/v1"
+          "description": "Dihedral angle restraints TBL file",
+          "haddock_type": "CNSRestraintFiles",
+          "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "dihedrals": {
           "description": "Dihedral restraints",
@@ -273,9 +273,9 @@
           "enum": ["yes", "no"]
         },
         "hbonddata": {
-            "description": "Hydrogen bond restraints TBL file",
-	    "$ref": "resource://mdgroup/common_resources/path_file/v1",
-            "haddock_type": "CNSRestraintFiles"
+          "description": "Hydrogen bond restraints TBL file",
+          "haddock_type": "CNSRestraintFiles",
+          "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "hbond": {
           "description": "Hbond Distance restraints",
@@ -712,14 +712,14 @@
           "type": "integer"
         },
         "tbldata": {
-            "description": "HADDOCK ambiguous restraints",
-            "haddock_type": "CNSRestraintFile",
-	    "$ref": "resource://mdgroup/common_resources/path_file/v1",
+          "description": "HADDOCK ambiguous restraints",
+          "haddock_type": "CNSRestraintFile",
+          "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "tensordata": {
           "description": "Tensor distance restraints file for all PCS restraints",
           "haddock_type": "CNSRestraintFile",
-	    "$ref": "resource://mdgroup/common_resources/path_file/v1"
+          "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "timestep": {
           "default": 0.002,
@@ -790,7 +790,7 @@
         "unambigtbldata": {
           "description": "HADDOCK restraints TBL file with restraints that will always be enforced",
           "haddock_type": "CNSRestraintFile",
-	    "$ref": "resource://mdgroup/common_resources/path_file/v1"
+          "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "username": {
           "default": "",

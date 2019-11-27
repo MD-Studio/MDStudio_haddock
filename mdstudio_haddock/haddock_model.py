@@ -21,7 +21,7 @@ from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
 from .haddock_model_classes import haddock_orm
 from .haddock_helper_methods import new_incremented_param_name, validate_model
 
-schemadir = pkg_resources.resource_filename('lie_haddock', '/schemas/endpoints')
+schemadir = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/endpoints')
 
 
 def remove_haddock_data_block(project, block_id, multiple=False):
