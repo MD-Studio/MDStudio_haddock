@@ -3,8 +3,8 @@
 from mdstudio.api.endpoint import endpoint
 from mdstudio.component.session import ComponentSession
 
-from lie_graph.graph_io.io_dict_format import write_dict
-from lie_graph.graph_io.io_web_format import write_web
+from graphit.graph_io.io_pydata_format import write_pydata
+from graphit.graph_io.io_web_format import write_web
 
 from .haddock_helper_methods import resolve_credentials
 from .haddock_xmlrpc_endpoints import HaddockXmlrpcInterface
@@ -44,7 +44,7 @@ class HaddockComponent(ComponentSession):
 
         # Return parameters as dictionary
         result = {'project_id': project_id}
-        result.update(write_dict(params, allow_none=False))
+        result.update(write_pydata(params, allow_none=False))
         return result
 
     # @endpoint('import_project', 'haddock-project-import-request', 'haddock-project-import-response')
@@ -93,7 +93,7 @@ class HaddockComponent(ComponentSession):
             save_project(project, request['project_id'])
 
             result = {'project_id': request['project_id']}
-            result.update(write_dict(params, allow_none=False))
+            result.update(write_pydata(params, allow_none=False))
 
         return result
 
@@ -117,7 +117,7 @@ class HaddockComponent(ComponentSession):
             save_project(project, request['project_id'])
 
             result = {'project_id': request['project_id']}
-            result.update(write_dict(params, allow_none=False))
+            result.update(write_pydata(params, allow_none=False))
 
         return result
 
@@ -140,7 +140,7 @@ class HaddockComponent(ComponentSession):
             save_project(project, request['project_id'])
 
             result = {'project_id': request['project_id']}
-            result.update(write_dict(params, allow_none=False))
+            result.update(write_pydata(params, allow_none=False))
 
         return result
 
@@ -164,7 +164,7 @@ class HaddockComponent(ComponentSession):
             save_project(project, request['project_id'])
 
             result = {'project_id': request['project_id']}
-            result.update(write_dict(params, allow_none=False))
+            result.update(write_pydata(params, allow_none=False))
 
         return result
 
@@ -188,7 +188,7 @@ class HaddockComponent(ComponentSession):
             save_project(project, request['project_id'])
 
             result = {'project_id': request['project_id']}
-            result.update(write_dict(params, allow_none=False))
+            result.update(write_pydata(params, allow_none=False))
 
         return result
 

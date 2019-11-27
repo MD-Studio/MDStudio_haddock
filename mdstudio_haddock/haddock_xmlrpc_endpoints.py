@@ -209,11 +209,11 @@ class HaddockXmlrpcInterface(object):
         file_size_dl = 0
         block_sz = 8192
         while True:
-            buffer = u.read(block_sz)
-            if not buffer:
+            iobuffer = u.read(block_sz)
+            if not iobuffer:
                 break
-            file_size_dl += len(buffer)
-            download_file.write(buffer)
+            file_size_dl += len(iobuffer)
+            download_file.write(iobuffer)
         download_file.close()
 
         if os.path.isfile(target):

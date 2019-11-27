@@ -11,12 +11,13 @@ import os
 import logging
 import pkg_resources
 
-from lie_graph import GraphAxis
-from lie_graph.graph_math_operations import graph_join, graph_axis_update
-from lie_graph.graph_io.io_web_format import read_web, write_web
-from lie_graph.graph_io.io_jsonschema_format import read_json_schema
-from lie_graph.graph_axis.graph_axis_methods import node_descendants
-from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
+from graphit import GraphAxis
+from graphit.graph_combinatorial.graph_split_join_operations import graph_join
+from graphit.graph_combinatorial.graph_update_operations import graph_axis_update
+from graphit.graph_io.io_web_format import read_web, write_web
+from graphit.graph_io.io_jsonschema_format import read_json_schema
+from graphit.graph_axis.graph_axis_methods import node_descendants
+from graphit.graph_axis.graph_axis_mixin import NodeAxisTools
 
 from .haddock_model_classes import haddock_orm
 from .haddock_helper_methods import new_incremented_param_name, validate_model
@@ -30,7 +31,7 @@ def remove_haddock_data_block(project, block_id, multiple=False):
     block ID.
 
     :param project:   Haddock project containing data
-    :type project:    :lie_graph:GraphAxis
+    :type project:    :graphit:GraphAxis
     :param block_id:  identifier of data block to remove
     :type block_id:   :py:str
     :param multiple:  remove multiple if found
@@ -80,7 +81,7 @@ def load_project(project_id):
     :type project_id:  :py:str
 
     :return:           Haddock project data model
-    :rtype:            :lie_graph:GraphAxis
+    :rtype:            :graphit:GraphAxis
     """
 
     project = GraphAxis()
@@ -103,7 +104,7 @@ def new_project(project_id):
     :type project_id:  :py:str
 
     :return:           Haddock project data model
-    :rtype:            :lie_graph:GraphAxis
+    :rtype:            :graphit:GraphAxis
     """
 
     # Create new project block
@@ -123,7 +124,7 @@ def save_project(project, project_id):
     Save a project to a file or database
 
     :param project:    project data model to save
-    :type project:     :lie_graph:GraphAxis
+    :type project:     :graphit:GraphAxis
     :param project_id: project identifier as file path or database entry name
     :type project_id:  :py:str
     """
@@ -143,7 +144,7 @@ def new_haddock_data_block_from_template(template):
     :type template:     :py:str
 
     :return:            graph based data model representing the data block
-    :rtype:             :lie_graph:GraphAxis
+    :rtype:             :graphit:GraphAxis
     """
 
     if not os.path.isfile(template):
@@ -173,7 +174,7 @@ def new_parameter_block(project, template, haddock_type, max_mult=None, attach=N
     The data block itself is defined by the haddock_type.
 
     :param project:      Haddock project to add new parameter block to
-    :type project:       :lie_graph:GraphAxis
+    :type project:       :graphit:GraphAxis
     :param template:     JSON Schema template file describing parameter block
     :type template:      :py:str
     :param haddock_type: Main Haddock type of the parameter block to add
@@ -235,14 +236,14 @@ def edit_parameter_block(project, block_id, data):
     and updated as such.
 
     :param project:   Haddock project containing data
-    :type project:    :lie_graph:GraphAxis
+    :type project:    :graphit:GraphAxis
     :param block_id:  primary data block identifier
     :type block_id:   :py:str
     :param data:      data key, value pairs to update
     :type data:       :py:dict
 
     :return:          updated data block
-    :rtype:           :lie_graph:GraphAxis
+    :rtype:           :graphit:GraphAxis
     """
 
     # Get data block from project by block ID

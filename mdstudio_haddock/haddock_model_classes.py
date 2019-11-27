@@ -2,8 +2,8 @@
 
 import string
 
-from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
-from lie_graph.graph_orm import GraphORM
+from graphit.graph_axis.graph_axis_mixin import NodeAxisTools
+from graphit.graph_orm import GraphORM
 
 from .haddock_io.haddock_io_pdb import PDBParser
 from .haddock_io.haddock_io_tbl import validate_tbl

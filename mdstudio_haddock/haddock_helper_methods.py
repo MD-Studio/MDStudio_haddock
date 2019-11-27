@@ -71,7 +71,7 @@ def validate_model(model):
     the leaf nodes up the tree.
 
     :param model: part of data model to validate
-    :type model:  :lie_graph:GraphAxis
+    :type model:  :graphit:GraphAxis
 
     :return:      overall successful validation
     :rtype:       :py:bool
