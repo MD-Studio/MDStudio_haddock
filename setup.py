@@ -43,9 +43,7 @@ setup(
     py_modules=[distribution_name],
     test_suite="tests",
     install_requires=['py-graphit', 'pandas'],
-    extras_require={
-        'test': ['coverage', 'jsonschema', 'unittest2']
-    },
+    extras_require={'test': ['jsonschema']},
     include_package_data=True,
     zip_safe=True,
     classifiers=[
