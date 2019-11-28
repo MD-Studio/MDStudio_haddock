@@ -10,11 +10,11 @@ Python function for mdstudio_haddock module, run as:
 
 import os
 import sys
-import unittest2
+import unittest
 import logging
 
 # Init basic logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.WARN)
 
 # Add modules in package to path so we can import them
 modulepath = os.path.abspath(os.path.join(os.path.dirname(__file__), '../'))
@@ -23,10 +23,10 @@ sys.path.insert(0, modulepath)
 
 def module_test_suite():
     """
-    Run mdstudio_haddock module unit tests
+    Run MDStudio_atb module unit tests
     """
 
     testpath = os.path.join(os.path.dirname(__file__), 'module')
-    loader = unittest2.TestLoader()
+    loader = unittest.TestLoader()
     suite = loader.discover(testpath, pattern='module_*.py')
     return suite

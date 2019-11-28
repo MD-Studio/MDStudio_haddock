@@ -7,22 +7,24 @@ Unit tests for custom Haddock parameter validators
 """
 
 import os
-import unittest2
+import unittest
 import pkg_resources
 
-from lie_graph import GraphAxis
-from lie_graph.graph_io.io_web_format import read_web
-from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
+from graphit import GraphAxis
+from graphit.graph_io.io_web_format import read_web
+from graphit.graph_axis.graph_axis_mixin import NodeAxisTools
 
 from mdstudio_haddock.haddock_model_classes import haddock_orm
 from mdstudio_haddock.haddock_io.haddock_io_tbl import validate_tbl
 from mdstudio_haddock.haddock_io.haddock_io_pdb import PDBParser
 
+from unittest_baseclass import UnittestPythonCompatibility
+
 currpath = os.path.dirname(__file__)
 schemadir = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/endpoints')
 
 
-class TestHaddockDataModelTBLValidation(unittest2.TestCase):
+class TestHaddockDataModelTBLValidation(UnittestPythonCompatibility):
 
     webfile = os.path.join(currpath, '../', 'files', 'haddock_params_complete.web')
 
@@ -72,7 +74,7 @@ class TestHaddockDataModelTBLValidation(unittest2.TestCase):
                 self.assertTrue(v.validate())
 
 
-class TestHaddockDataModelPDBValidation(unittest2.TestCase):
+class TestHaddockDataModelPDBValidation(UnittestPythonCompatibility):
 
     pdbfile = os.path.join(currpath, '../', 'files', 'protein1.pdb')
 
@@ -92,5 +94,3 @@ class TestHaddockDataModelPDBValidation(unittest2.TestCase):
         self.assertItemsEqual(pdbdf['resname'].unique(), ['ARG', 'ALA', 'GLN', 'PRO', 'LYS', 'TYR', 'SER', 'VAL',
                                                           'ASP', 'GLU', 'ASN', 'GLY', 'THR', 'TRP', 'ILE', 'MET',
                                                           'LEU', 'PHE'])
-
-

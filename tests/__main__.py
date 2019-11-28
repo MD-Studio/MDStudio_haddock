@@ -8,7 +8,7 @@ Python runner for mdstudio_haddock module unit tests, run as:
 
 import os
 import sys
-import unittest2
+import unittest
 import logging
 
 # Init basic logging
@@ -23,14 +23,16 @@ def module_test_suite():
     """
     Run mdstudio_haddock module unit tests
     """
-    loader = unittest2.TestLoader()
+    loader = unittest.TestLoader()
 
     print('Running mdstudio_haddock unittests')
     testpath = os.path.join(os.path.dirname(__file__), 'module')
     suite = loader.discover(testpath, pattern='module_*.py')
-    runner = unittest2.TextTestRunner(verbosity=2)
-    runner.run(suite)
+    runner = unittest.TextTestRunner(verbosity=2)
+
+    return runner.run(suite).wasSuccessful()
 
 
 if __name__ == '__main__':
-    module_test_suite()
+    result = module_test_suite()
+    sys.exit(not result)

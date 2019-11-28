@@ -9,14 +9,15 @@ Unit tests for building a new Haddock project using the data model
 import os
 import json
 import jsonschema
-import unittest2
 import pkg_resources
 
-from lie_graph.graph_io.io_web_format import read_web, write_web
-from lie_graph.graph_io.io_dict_format import write_dict
+from graphit.graph_io.io_web_format import read_web, write_web
+from graphit.graph_io.io_pydata_format import write_pydata
 
 from mdstudio_haddock.haddock_model import (remove_haddock_data_block, load_project, save_project, edit_parameter_block,
                                             new_parameter_block, new_project)
+
+from unittest_baseclass import UnittestPythonCompatibility
 
 currpath = os.path.dirname(__file__)
 schemadir = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/endpoints')
@@ -39,13 +40,13 @@ def json_schema_validation(data, schema):
     jsonschema.validate(data, js)
     try:
         jsonschema.validate(data, js)
-    except:
+    except Exception:
         return False
 
     return True
 
 
-class TestHaddockProjectBuild(unittest2.TestCase):
+class TestHaddockProjectBuild(UnittestPythonCompatibility):
 
     files = os.path.join(currpath, '../', 'files')
 
@@ -80,7 +81,8 @@ class TestHaddockProjectBuild(unittest2.TestCase):
         params = edit_parameter_block(self.project, 'project', projectdata)
 
         # Validate against JSON schema
-        self.assertTrue(json_schema_validation({'project_id': 'test', 'project': write_dict(params, allow_none=False)},
+        self.assertTrue(
+            json_schema_validation({'project_id': 'test', 'project': write_pydata(params, allow_none=False)},
                                                'haddock-project-request.v1.json'))
 
     def test_edit_first_partner(self):
@@ -97,9 +99,11 @@ class TestHaddockProjectBuild(unittest2.TestCase):
 
         block_id, params = new_parameter_block(self.project, 'haddock-partner-request.v1',
                                                'HaddockPartnerParameters', max_mult=5)
+
         params = edit_parameter_block(self.project, block_id, partnerdata)
+
         valdict = {'project_id': 'test'}
-        valdict.update(write_dict(params))
+        valdict.update(write_pydata(params))
 
         self.assertIn(block_id, ('project.p1', 'project.p2'))
         self.assertTrue(json_schema_validation(valdict, 'haddock-partner-request.v1.json'))
@@ -121,7 +125,7 @@ class TestHaddockProjectBuild(unittest2.TestCase):
                                                'HaddockPartnerParameters', max_mult=5)
         params = edit_parameter_block(self.project, block_id, partnerdata)
         valdict = {'project_id': 'test'}
-        valdict.update(write_dict(params))
+        valdict.update(write_pydata(params))
 
         self.assertIn(block_id, ('project.p1', 'project.p2'))
         self.assertTrue(json_schema_validation(valdict, 'haddock-partner-request.v1.json'))
@@ -132,11 +136,11 @@ class TestHaddockProjectBuild(unittest2.TestCase):
         """
 
         semiflex = [{'start': 96, 'end': 100}, {'start': 103, 'end': 107}]
-        for i, range in enumerate(semiflex, start=1):
+        for i, srange in enumerate(semiflex, start=1):
             block_id, params = new_parameter_block(self.project, 'haddock-flexrange-request.v1',
                                                    'Range', attach='p1.semiflex.segments')
-            params = edit_parameter_block(self.project, block_id, range)
-            valdict = {'project_id': 'test', 'item': write_dict(params)}
+            params = edit_parameter_block(self.project, block_id, srange)
+            valdict = {'project_id': 'test', 'item': write_pydata(params)}
 
             self.assertEqual(block_id, 'project.p1.semiflex.segments.item{0}'.format(i))
             self.assertTrue(json_schema_validation(valdict, 'haddock-flexrange-request.v1.json'))
@@ -149,7 +153,7 @@ class TestHaddockProjectBuild(unittest2.TestCase):
         block_id, params = new_parameter_block(self.project, 'haddock-flexrange-request.v1',
                                                'Range', attach='p1.fullyflex.segments')
         params = edit_parameter_block(self.project, block_id, fullyflex)
-        valdict = {'project_id': 'test', 'item': write_dict(params)}
+        valdict = {'project_id': 'test', 'item': write_pydata(params)}
 
         # Validate SemiflexSegmentList separately
         sf = self.project.xpath('project.p1.fullyflex', sep='.')
@@ -174,7 +178,7 @@ class TestHaddockProjectBuild(unittest2.TestCase):
                                                'RDCParameters', max_mult=5)
         params = edit_parameter_block(self.project, block_id, rdcdata)
         valdict = {'project_id': 'test'}
-        valdict.update(write_dict(params))
+        valdict.update(write_pydata(params))
 
         self.assertEqual(block_id, 'project.rdc1')
         self.assertTrue(json_schema_validation(valdict, 'haddock-rdc-request.v1.json'))
@@ -190,13 +194,12 @@ class TestHaddockProjectBuild(unittest2.TestCase):
         valdict = {'project_id': 'test'}
         if 'tensordata' in pcsdata:
             params = edit_parameter_block(self.project, 'project.tensorfile', pcsdata)
-            valdict.update(write_dict(params))
+            valdict.update(write_pydata(params))
 
         block_id, params = new_parameter_block(self.project, 'haddock-pcs-request.v1',
                                                'PCSParameters', max_mult=10)
         params = edit_parameter_block(self.project, block_id, pcsdata)
-        valdict.update(write_dict(params))
+        valdict.update(write_pydata(params))
 
         self.assertEqual(block_id, 'project.pcs1')
         self.assertTrue(json_schema_validation(valdict, 'haddock-pcs-request.v1.json'))
-

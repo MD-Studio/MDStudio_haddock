@@ -7,17 +7,19 @@ Unit tests for XML-RPC communication with the Haddock server
 """
 
 import os
-import unittest2
+import unittest
 import pkg_resources
 import shutil
 import time
 
-from lie_graph.graph_io.io_jsonschema_format import read_json_schema
-from lie_graph.graph_io.io_web_format import read_web
-from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
+from graphit.graph_io.io_jsonschema_format import read_json_schema
+from graphit.graph_io.io_web_format import read_web
+from graphit.graph_axis.graph_axis_mixin import NodeAxisTools
 
 from mdstudio_haddock.haddock_xmlrpc_endpoints import HaddockXmlrpcInterface
 from mdstudio_haddock.haddock_helper_methods import resolve_credentials
+
+from unittest_baseclass import UnittestPythonCompatibility
 
 # Parse package configuration file
 settings_file = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/settings.json')
@@ -28,9 +30,9 @@ settings = xmlrpc_settings.getnodes(xmlrpc_settings.root).settings
 server_username, server_password = resolve_credentials(settings)
 
 
-@unittest2.skipIf(not server_username or not server_password,
+@unittest.skipIf(not server_username or not server_password,
                   "HADDOCK_SERVER_USER and HADDOCK_SERVER_PW environment variables not set.")
-class TestHaddockServerCommunication(unittest2.TestCase):
+class TestHaddockServerCommunication(UnittestPythonCompatibility):
 
     filedir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../files/'))
     tempfiles = []
