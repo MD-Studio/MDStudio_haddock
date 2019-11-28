@@ -22,7 +22,7 @@ class FloatArray(NodeAxisTools):
         :return:
         """
 
-        if key == self.node_value_tag:
+        if key == self.data.value_tag:
             assert isinstance(value, list)
 
             float_array = []
@@ -36,7 +36,7 @@ class FloatArray(NodeAxisTools):
 
     def validate(self, key=None):
 
-        key = key or self.node_value_tag
+        key = key or self.data.value_tag
 
         return all([isinstance(n, float) for n in self.nodes[self.nid][key]])
 
@@ -59,7 +59,7 @@ class HaddockRunParameters(NodeAxisTools):
 
         # Number of it1 structures to analyze not larger then generated
         if self.structures_1.value < self.anastruc_1.value:
-            self.anastruc_1.set(self.node_value_tag, self.structures_1.value)
+            self.anastruc_1.set(self.data.value_tag, self.structures_1.value)
             haddock_validation_warning(self, 'Set anastruc_1 equal to structures_1')
 
         # If random exclusion then partition should be larger or equal to 2
@@ -138,8 +138,8 @@ class CNSRestraintFiles(NodeAxisTools):
         :rtype:     :py:bool
         """
 
-        tbldata = self.get(self.node_value_tag)
-        key = key or self.node_key_tag
+        tbldata = self.get(self.data.value_tag)
+        key = key or self.data.key_tag
         if tbldata is not None:
 
             is_pcs = self.get(key) in ('tensordata', 'pcsdata')
@@ -197,7 +197,7 @@ class HaddockPartnerParameters(NodeAxisTools):
 
             # Check the segid used during docking, automatically set of not defined
             segid = self.segid.get()
-            allsegids = [node.get() for node in self._full_graph.query_nodes(key='segid') if node.nid != self.segid.nid]
+            allsegids = [node.get() for node in self.origin.query_nodes(key='segid') if node.nid != self.segid.nid]
             if segid is None:
                 for s in string.ascii_uppercase:
                     if not s in allsegids:
@@ -295,7 +295,7 @@ class FlexSegmentList(NodeAxisTools):
             if self.mode.get() == 'manual' and not len(flexrange):
                 is_valid = haddock_validation_warning(self, 'Manual semi-flexible segments but no segments defined')
             elif len(flexrange):
-                self.mode.set(self.node_value_tag, 'automatic')
+                self.mode.set(self.data.value_tag, 'automatic')
 
         return is_valid
 
@@ -360,19 +360,19 @@ class LabeledRangeQuintupleArray(NodeAxisTools):
 
 # Predefined HADDOCK ORM mapper
 haddock_orm = GraphORM()
-haddock_orm.map_node(HaddockRunParameters, haddock_type='HaddockRunParameters')
-haddock_orm.map_node(FloatArray, haddock_type='FloatArray')
-haddock_orm.map_node(Range, haddock_type='Range')
-haddock_orm.map_node(ExtStageConstants, haddock_type='ExtStageConstants')
-haddock_orm.map_node(HaddockPartnerParameters, haddock_type='HaddockPartnerParameters')
-haddock_orm.map_node(CNSRestraintFiles, haddock_type='CNSRestraintFile')
-haddock_orm.map_node(FlexSegmentList, haddock_type='SemiflexSegmentList')
-haddock_orm.map_node(FlexSegmentList, haddock_type='SegmentList')
-haddock_orm.map_node(PDBData, haddock_type='PDBData')
-haddock_orm.map_node(LabeledRangePairArray, haddock_type='LabeledRangePairArray')
-haddock_orm.map_node(LabeledRangeTripleArray, haddock_type='LabeledRangeTripleArray')
-haddock_orm.map_node(LabeledRangeQuadrupleArray, haddock_type='LabeledRangeQuadrupleArray')
-haddock_orm.map_node(LabeledRangeQuintupleArray, haddock_type='LabeledRangeQuintupleArray')
+haddock_orm.node_mapping.add(HaddockRunParameters, lambda x: x.get('haddock_type') == 'HaddockRunParameters')
+haddock_orm.node_mapping.add(FloatArray, lambda x: x.get('haddock_type') == 'FloatArray')
+haddock_orm.node_mapping.add(Range, lambda x: x.get('haddock_type') == 'Range')
+haddock_orm.node_mapping.add(ExtStageConstants, lambda x: x.get('haddock_type') == 'ExtStageConstants')
+haddock_orm.node_mapping.add(HaddockPartnerParameters, lambda x: x.get('haddock_type') == 'HaddockPartnerParameters')
+haddock_orm.node_mapping.add(CNSRestraintFiles, lambda x: x.get('haddock_type') == 'CNSRestraintFile')
+haddock_orm.node_mapping.add(FlexSegmentList, lambda x: x.get('haddock_type') == 'SemiflexSegmentList')
+haddock_orm.node_mapping.add(FlexSegmentList, lambda x: x.get('haddock_type') == 'SegmentList')
+haddock_orm.node_mapping.add(PDBData, lambda x: x.get('haddock_type') == 'PDBData')
+haddock_orm.node_mapping.add(LabeledRangePairArray, lambda x: x.get('haddock_type') == 'LabeledRangePairArray')
+haddock_orm.node_mapping.add(LabeledRangeTripleArray, lambda x: x.get('haddock_type') == 'LabeledRangeTripleArray')
+haddock_orm.node_mapping.add(LabeledRangeQuadrupleArray, lambda x: x.get('haddock_type') == 'LabeledRangeQuadrupleArray')
+haddock_orm.node_mapping.add(LabeledRangeQuintupleArray, lambda x: x.get('haddock_type') == 'LabeledRangeQuintupleArray')
 
 for tbldata in ('tbldata', 'dihedraldata', 'rdcdata', 'danidata', 'tensordata', 'pcsdata'):
-    haddock_orm.map_node(CNSRestraintFiles, key=tbldata)
+    haddock_orm.node_mapping.add(CNSRestraintFiles, lambda x: x.get('key') == tbldata)
