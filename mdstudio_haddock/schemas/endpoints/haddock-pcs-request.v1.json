@@ -12,6 +12,7 @@
       "default": "",
       "description": "Tensor distance restraints file for all PCS restraints",
       "haddock_type": "CNSRestraintFile",
+      "type": "string",
       "$ref": "resource://mdgroup/common_resources/path_file/v1"
     },
     "pcs": {
@@ -39,6 +40,7 @@
         "pcsdata": {
           "description": "HADDOCK TBL file containing PCS restraints",
           "haddock_type": "CNSRestraintFile",
+          "type": "string",
           "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "constants": {

@@ -52,7 +52,8 @@
         "danidata": {
           "description": "Anisotropy file",
           "haddock_type": "CNSRestraintFile",
-          "type": "string"
+          "type": "string",
+          "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "constants": {
           "description": "DANI energy constants",

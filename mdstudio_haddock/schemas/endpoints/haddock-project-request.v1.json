@@ -194,6 +194,7 @@
         "dihedraldata": {
           "description": "Dihedral angle restraints TBL file",
           "haddock_type": "CNSRestraintFiles",
+          "type": "string",
           "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "dihedrals": {
@@ -275,6 +276,7 @@
         "hbonddata": {
           "description": "Hydrogen bond restraints TBL file",
           "haddock_type": "CNSRestraintFiles",
+          "type": "string",
           "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "hbond": {
@@ -714,11 +716,13 @@
         "tbldata": {
           "description": "HADDOCK ambiguous restraints",
           "haddock_type": "CNSRestraintFile",
+          "type": "string",
           "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "tensordata": {
           "description": "Tensor distance restraints file for all PCS restraints",
           "haddock_type": "CNSRestraintFile",
+          "type": "string",
           "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "timestep": {
@@ -790,6 +794,7 @@
         "unambigtbldata": {
           "description": "HADDOCK restraints TBL file with restraints that will always be enforced",
           "haddock_type": "CNSRestraintFile",
+          "type": "string",
           "$ref": "resource://mdgroup/common_resources/path_file/v1"
         },
         "username": {
