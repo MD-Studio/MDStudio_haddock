@@ -2,11 +2,10 @@ FROM mdstudio/mdstudio_docker3:0.0.3
 
 COPY . /home/mdstudio/mdstudio_haddock
 
-RUN chown mdstudio:mdstudio /home/mdstudio/mdstudio_haddock
+RUN chown -R mdstudio:mdstudio /home/mdstudio/mdstudio_haddock
+RUN chmod -R 755 /home/mdstudio
 
 WORKDIR /home/mdstudio/mdstudio_haddock
-
-RUN pip install https://github.com/MD-Studio/mdstudio_graph/tarball/master#egg=mdstudio_graph
 
 RUN pip install -e .
 
