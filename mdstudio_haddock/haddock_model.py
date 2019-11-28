@@ -218,8 +218,7 @@ def new_parameter_block(project, template, haddock_type, max_mult=None, attach=N
 
     block_id = new_block.key
     new_block.key = new_incremented_param_name(block_id, curr_blocks.keys())
-
-    mapping = graph_join(project, new_block.descendants(include_self=True), [(target_attach_nid, new_block.nid)])
+    mapping = graph_join(project, new_block.descendants(include_self=True), links=[(target_attach_nid, new_block.nid)])
     logging.info('Add "{0}" template entry to the project'.format(new_block.key))
 
     # Get path (block_id) to newly added node
