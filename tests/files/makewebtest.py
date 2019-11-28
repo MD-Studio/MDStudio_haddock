@@ -4,8 +4,8 @@ import os
 import logging
 import pkg_resources
 
-from lie_graph.graph_io.io_web_format import read_web, write_web
-from lie_graph.graph_axis.graph_axis_mixin import NodeAxisTools
+from graphit.graph_io.io_web_format import read_web, write_web
+from graphit.graph_axis.graph_axis_mixin import NodeAxisTools
 
 from mdstudio_haddock.haddock_model import (remove_haddock_data_block, load_project, save_project, edit_parameter_block,
                                             new_parameter_block, new_project)
