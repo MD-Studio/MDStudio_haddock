@@ -7,7 +7,6 @@ Unit tests for custom Haddock parameter validators
 """
 
 import os
-import unittest
 import pkg_resources
 
 from graphit import GraphAxis
@@ -18,7 +17,7 @@ from mdstudio_haddock.haddock_model_classes import haddock_orm
 from mdstudio_haddock.haddock_io.haddock_io_tbl import validate_tbl
 from mdstudio_haddock.haddock_io.haddock_io_pdb import PDBParser
 
-from unittest_baseclass import UnittestPythonCompatibility
+from module.unittest_baseclass import UnittestPythonCompatibility
 
 currpath = os.path.dirname(__file__)
 schemadir = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/endpoints')

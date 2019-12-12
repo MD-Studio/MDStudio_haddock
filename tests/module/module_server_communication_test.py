@@ -19,7 +19,7 @@ from graphit.graph_axis.graph_axis_mixin import NodeAxisTools
 from mdstudio_haddock.haddock_xmlrpc_endpoints import HaddockXmlrpcInterface
 from mdstudio_haddock.haddock_helper_methods import resolve_credentials
 
-from unittest_baseclass import UnittestPythonCompatibility
+from module.unittest_baseclass import UnittestPythonCompatibility
 
 # Parse package configuration file
 settings_file = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/settings.json')

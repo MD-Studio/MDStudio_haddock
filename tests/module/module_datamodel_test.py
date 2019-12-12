@@ -21,7 +21,7 @@ from mdstudio_haddock.haddock_model_classes import haddock_orm
 from mdstudio_haddock.haddock_model import (remove_haddock_data_block, load_project, save_project, edit_parameter_block,
                                             new_haddock_data_block_from_template, new_parameter_block)
 
-from unittest_baseclass import UnittestPythonCompatibility
+from module.unittest_baseclass import UnittestPythonCompatibility
 
 currpath = os.path.dirname(__file__)
 schemadir = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/endpoints')
