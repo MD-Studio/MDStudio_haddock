@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/MD-Studio/mdstudio_haddock.svg?branch=master)](https://travis-ci.org/MD-Studio/mdstudio_haddock)
 
 This repository gathers different interfaces to HADDOCK software (http://www.bonvinlab.org/software/haddock2.2/) developed by 
-the group of Pr. Alexandre Bonvin at Utrecht University.
+the group of Prof. dr. Alexandre Bonvin at Utrecht University.
 
 The bridge between your local python script/pipeline and the software is made through an XMLRPC API implemented on the server 
 side. By setting up a proper XMLRPC server on the client side, you can expose different methods to interact with HADDOCK and 
