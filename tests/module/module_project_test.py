@@ -14,8 +14,7 @@ import pkg_resources
 from graphit.graph_io.io_web_format import read_web, write_web
 from graphit.graph_io.io_pydata_format import write_pydata
 
-from mdstudio_haddock.haddock_model import (remove_haddock_data_block, load_project, save_project, edit_parameter_block,
-                                            new_parameter_block, new_project)
+from mdstudio_haddock.haddock_model import (edit_parameter_block, new_parameter_block, new_project)
 
 from module.unittest_baseclass import UnittestPythonCompatibility
 

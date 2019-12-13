@@ -18,7 +18,10 @@ DEFAULT_CONTACT_COLUMN_NAMES = ['atnum', 'atname', 'atalt', 'resname', 'chain', 
 
 class PDBParser(object):
 
-    def __init__(self, columns=DEFAULT_CONTACT_COLUMN_NAMES):
+    def __init__(self, columns=None):
+
+        if columns is None:
+            columns = DEFAULT_CONTACT_COLUMN_NAMES
 
         self.pdb_dict = dict([(n, []) for n in columns])
 

@@ -7,18 +7,16 @@ import pkg_resources
 from graphit.graph_io.io_web_format import read_web, write_web
 from graphit.graph_axis.graph_axis_mixin import NodeAxisTools
 
-from mdstudio_haddock.haddock_model import (remove_haddock_data_block, load_project, save_project, edit_parameter_block,
-                                            new_parameter_block, new_project)
+from mdstudio_haddock.haddock_model import (edit_parameter_block, new_parameter_block, new_project)
 from mdstudio_haddock.haddock_model_classes import haddock_orm
-from mdstudio_haddock.haddock_helper_methods import validate_model
 
 logging.basicConfig(level=logging.INFO)
 currpath = os.path.dirname(__file__)
 schemadir = pkg_resources.resource_filename('mdstudio_haddock', '/schemas/endpoints')
 
-# project = read_web('test_project.web')
-# project.orm = haddock_orm
-# project.node_tools = NodeAxisTools
+project = read_web('test_project.web')
+project.orm = haddock_orm
+project.node_tools = NodeAxisTools
 
 project = new_project('mdstudio')
 

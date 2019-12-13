@@ -84,7 +84,7 @@ class TestHaddockDataModelBlockAdd(UnittestPythonCompatibility):
         """
 
         block_id, project = new_parameter_block(self.web, 'haddock-dani-request.v1', 'DANIParameters', max_mult=5)
-
+        print(project)
         self.assertEqual(block_id, 'project.dan1')
         self.assertTrue('dan1' in self.web.keys())
 

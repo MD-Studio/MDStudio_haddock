@@ -57,7 +57,7 @@ def new_incremented_param_name(basename, currnames, start=1):
     name = None
     while True:
         name = '{0}{1}'.format(basename, start)
-        if not name in currnames:
+        if name not in currnames:
             break
         start += 1
 
@@ -94,7 +94,7 @@ def validate_model(model):
                     return False
 
                 pnid = node.parent().nid
-                if not pnid in done and pnid in allnodes:
+                if pnid not in done and pnid in allnodes:
                     parents.append(pnid)
 
         if parents:

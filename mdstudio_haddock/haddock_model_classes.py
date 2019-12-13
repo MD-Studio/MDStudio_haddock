@@ -23,7 +23,8 @@ class FloatArray(NodeAxisTools):
         """
 
         if key == self.data.value_tag:
-            assert isinstance(value, list)
+            if not isinstance(value, list):
+                raise ValueError('{0} should be of type list'.format(value))
 
             float_array = []
             for v in value:
@@ -63,7 +64,7 @@ class HaddockRunParameters(NodeAxisTools):
             haddock_validation_warning(self, 'Set anastruc_1 equal to structures_1')
 
         # If random exclusion then partition should be larger or equal to 2
-        if self.noecv.value == False and self.ncvpart.value < 2:
+        if self.noecv.value is False and self.ncvpart.value < 2:
             is_valid = haddock_validation_warning(self,
                                                   'Number of partitions for random exclusion should be larger then 2')
 
@@ -84,15 +85,15 @@ class Range(NodeAxisTools):
         """
 
         is_valid = True
-        range = dict(self.children().items())
-        if len(range):
-            if len(range) != 2:
-                is_valid = haddock_validation_warning(self, 'Range should have two items got: {0}'.format(range))
-            if not all([isinstance(i, int) for i in range.values()]):
-                message = 'All values should be of type integer got: {0}'.format(range.values())
+        lrange = dict(self.children().items())
+        if len(lrange):
+            if len(lrange) != 2:
+                is_valid = haddock_validation_warning(self, 'Range should have two items got: {0}'.format(lrange))
+            if not all([isinstance(i, int) for i in lrange.values()]):
+                message = 'All values should be of type integer got: {0}'.format(lrange.values())
                 is_valid = haddock_validation_warning(self, message)
-            if range['start'] > range['end']:
-                message = 'Start "{start}" should be smaller then end "{end}"'.format(**range)
+            if lrange['start'] > lrange['end']:
+                message = 'Start "{start}" should be smaller then end "{end}"'.format(**lrange)
                 is_valid = haddock_validation_warning(self, message)
 
         return is_valid
@@ -200,7 +201,7 @@ class HaddockPartnerParameters(NodeAxisTools):
             allsegids = [node.get() for node in self.origin.query_nodes(key='segid') if node.nid != self.segid.nid]
             if segid is None:
                 for s in string.ascii_uppercase:
-                    if not s in allsegids:
+                    if s not in allsegids:
                         self.segid.set('value', s)
                         break
                 haddock_validation_warning(self, 'A segid should be defined for every partner. Set to: {0}'.format(s))

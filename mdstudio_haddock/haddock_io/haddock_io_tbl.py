@@ -48,6 +48,8 @@ def validate_tbl(restraints, pcs=False):
     lnr = 0
     # Temporary line storage for future output
     tmp_output = None
+    tmp = ''
+    postselections = 0
 
     for l in lines:
         lnr += 1
