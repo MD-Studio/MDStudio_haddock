@@ -23,7 +23,7 @@ sys.path.insert(0, modulepath)
 
 def module_test_suite():
     """
-    Run MDStudio_atb module unit tests
+    Run MDStudio_haddock module unit tests
     """
 
     testpath = os.path.join(os.path.dirname(__file__), 'module')
