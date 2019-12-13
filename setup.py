@@ -7,7 +7,7 @@
 # Part of MDStudio HADDOCK, providing access to the HADDOCK web server for
 # biomolecular docking.
 #
-# Copyright © 2016 Marc van Dijk, VU University Amsterdam, the Netherlands
+# Copyright © 2019 Marc van Dijk, VU University Amsterdam, the Netherlands
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ distribution_name = 'mdstudio_haddock'
 
 setup(
     name=distribution_name,
-    version=0.1,
+    version=1.0,
     description='Access to the HADDOCK webserver for biomolecular docking',
     author="""
     Marc van Dijk - VU University - Amsterdam
